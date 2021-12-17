@@ -29,6 +29,10 @@ module.exports = {
     ropsten: {
       url: process.env.ROPSTEN_URL,
       accounts: [`0x${process.env.ROPSTEN_PRIVATE_KEY}`]
+    },
+    rinkeby: {
+      url: process.env.RINKEBY_URL,
+      accounts: [`0x${process.env.RINKEBY_PRIVATE_KEY}`]
     }
   }
 };
