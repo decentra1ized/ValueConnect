@@ -1,0 +1,148 @@
+{
+  "data": {
+    "address": "0x8f94dc2a09400c1fb0fa3cf7b36d6d2ca33e838d",
+    "updated_at": "2021-12-17T14:26:33.480710752Z",
+    "next_update_at": "2021-12-17T14:31:33.480711182Z",
+    "quote_currency": "USD",
+    "chain_id": 137,
+    "items": [
+      {
+        "contract_decimals": 0,
+        "contract_name": "PolyDoge Baseball",
+        "contract_ticker_symbol": "PD⚾️💯",
+        "contract_address": "0xbbf75a5b94b63ebeb639a948a52574eebeb4b898",
+        "supports_erc": [
+          "erc20",
+          "erc721"
+        ],
+        "logo_url": "https://logos.covalenthq.com/tokens/137/0xbbf75a5b94b63ebeb639a948a52574eebeb4b898.png",
+        "last_transferred_at": "2021-06-14T22:47:54Z",
+        "type": "nft",
+        "balance": "1",
+        "balance_24h": null,
+        "quote_rate": 0,
+        "quote_rate_24h": null,
+        "quote": 0,
+        "quote_24h": null,
+        "nft_data": [
+          {
+            "token_id": "2221",
+            "token_balance": "1",
+            "token_url": "https://ipfs.io/ipfs/QmPKMG8JfxKK89Fe99V72Bi6qYWKDQoojvrxh6JmfBbCZr",
+            "supports_erc": [
+              "erc20",
+              "erc721"
+            ],
+            "token_price_wei": null,
+            "token_quote_rate_eth": null,
+            "original_owner": "0x8f94dc2a09400c1fb0fa3cf7b36d6d2ca33e838d",
+            "external_data": {
+              "name": "Batting for the Moon!",
+              "description": "Gifted to PolyDoge sports fans around the world, the Gerald Smiley inspired limited edition baseball card is a collector’s item. Batter up... to the moon!",
+              "image": "https://ipfs.io/ipfs/QmaqYNnLrxQqCKJnGbWaSccQq88smoz7PZsoNQ7EBqfzHg",
+              "image_256": "https://image-proxy.svc.prod.covalenthq.com/256,fit,png,saFAb0jz3muS-FAqOXoYgHlTWEX1xl81x7ipKsB2pxzg=/https://ipfs.io/ipfs/QmaqYNnLrxQqCKJnGbWaSccQq88smoz7PZsoNQ7EBqfzHg",
+              "image_512": "https://image-proxy.svc.prod.covalenthq.com/512,fit,png,sFn6cLZZ5ZqFQH19ZH5sP0Gn9gmwO943d3qlSowrN3N0=/https://ipfs.io/ipfs/QmaqYNnLrxQqCKJnGbWaSccQq88smoz7PZsoNQ7EBqfzHg",
+              "image_1024": "https://image-proxy.svc.prod.covalenthq.com/1024,fit,png,ssDzKsyQPjvNZtgyg_pTnWB5mEaIb-EhUKG0AFCWuI40=/https://ipfs.io/ipfs/QmaqYNnLrxQqCKJnGbWaSccQq88smoz7PZsoNQ7EBqfzHg",
+              "animation_url": null,
+              "external_url": null,
+              "attributes": [
+                {
+                  "trait_type": "3D Magic",
+                  "value": "Colin Perras"
+                },
+                {
+                  "trait_type": "Artwork",
+                  "value": "Dines"
+                },
+                {
+                  "trait_type": "Hero",
+                  "value": "Gerald Smiley"
+                },
+                {
+                  "trait_type": "Shirt No.",
+                  "value": "69"
+                },
+                {
+                  "trait_type": "Batting Average",
+                  "display_type": "boost_number",
+                  "value": "0.211"
+                },
+                {
+                  "trait_type": "RBI",
+                  "display_type": "boost_number",
+                  "value": 89
+                }
+              ],
+              "owner": null
+            },
+            "owner": "0x8f94dc2a09400c1fb0fa3cf7b36d6d2ca33e838d",
+            "owner_address": null,
+            "burned": null
+          }
+        ]
+      },
+      {
+        "contract_decimals": 0,
+        "contract_name": "PolyDoge X QuickSwap",
+        "contract_ticker_symbol": "PDQuick",
+        "contract_address": "0xe59fd80c8cb160ca490414c6069de003328148df",
+        "supports_erc": [
+          "erc20",
+          "erc721"
+        ],
+        "logo_url": "https://logos.covalenthq.com/tokens/137/0xe59fd80c8cb160ca490414c6069de003328148df.png",
+        "last_transferred_at": "2021-05-24T22:37:29Z",
+        "type": "nft",
+        "balance": "1",
+        "balance_24h": null,
+        "quote_rate": 0,
+        "quote_rate_24h": null,
+        "quote": 0,
+        "quote_24h": null,
+        "nft_data": [
+          {
+            "token_id": "4045",
+            "token_balance": "1",
+            "token_url": "https://ipfs.io/ipfs/QmcuEcanHmLftnj8L6CSfQeaDYpkLMm9gkr7PBmJZ6GwLE",
+            "supports_erc": [
+              "erc20",
+              "erc721"
+            ],
+            "token_price_wei": null,
+            "token_quote_rate_eth": null,
+            "original_owner": "0x8f94dc2a09400c1fb0fa3cf7b36d6d2ca33e838d",
+            "external_data": {
+              "name": "PolyDoge Dragon's Lair Coin",
+              "description": "A one-off piece of digital art to mark the LP rewards partnership between QuickSwap, the #1 AMM on Polygon, and PolyDoge, the #1 community. Together to the moon!",
+              "image": "https://ipfs.io/ipfs/QmU2LQ6QyZSMYm3Joon24SJ2WEKqfAjH238LgDbQ4zCHnw",
+              "image_256": "https://image-proxy.svc.prod.covalenthq.com/256,fit,png,szWEO0BjNiIbk39k8OxLL3VZyEaavwJyJ5iYNc8kji7k=/https://ipfs.io/ipfs/QmU2LQ6QyZSMYm3Joon24SJ2WEKqfAjH238LgDbQ4zCHnw",
+              "image_512": "https://image-proxy.svc.prod.covalenthq.com/512,fit,png,s253fzrpNAo1IA-gbONBSzL7N8sACUJUFtudo62nf-Ug=/https://ipfs.io/ipfs/QmU2LQ6QyZSMYm3Joon24SJ2WEKqfAjH238LgDbQ4zCHnw",
+              "image_1024": "https://image-proxy.svc.prod.covalenthq.com/1024,fit,png,s_IOXQOkHNiolEttXvpaLag39k1505OgxcXEN8K8lUbg=/https://ipfs.io/ipfs/QmU2LQ6QyZSMYm3Joon24SJ2WEKqfAjH238LgDbQ4zCHnw",
+              "animation_url": null,
+              "external_url": null,
+              "attributes": [
+                {
+                  "trait_type": "Artist",
+                  "value": "River Jordon White"
+                },
+                {
+                  "trait_type": "Power Rating",
+                  "display_type": "boost_percentage",
+                  "value": 9
+                }
+              ],
+              "owner": null
+            },
+            "owner": "0x8f94dc2a09400c1fb0fa3cf7b36d6d2ca33e838d",
+            "owner_address": null,
+            "burned": null
+          }
+        ]
+      }
+    ],
+    "pagination": null
+  },
+  "error": false,
+  "error_message": null,
+  "error_code": null
+}
