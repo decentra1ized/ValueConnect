@@ -9,12 +9,12 @@ import axios from 'axios'
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
   const [walletAddress, setWalletAddress] = useState('')
-  const userProfile = useRef({
-    name: "test",
-    funFact: "test1",
-    hobby: "test2",
-    interest: "test3",
-    job: "test4"
+  const [userProfile, setUserProfile] = useState({
+    name: '',
+    funFact: '',
+    hobby: '',
+    interest: '',
+    job: ''
   })
   const router = useRouter()
   
@@ -64,7 +64,7 @@ export default function Home() {
   async function getUserProfileFromServer () {
     try {
       const userProfileFile = (await axios.get(`/samples/userinfo/${walletAddress}.json`)).data
-      Object.assign(userProfile.current, userProfileFile)
+      setUserProfile(userProfileFile)
     } catch(e) {
       console.error(e)
       router.push('/')
@@ -84,7 +84,27 @@ export default function Home() {
           this is profile index page
           { walletAddress ? (
             <div>
-              Wallet Connected
+              <div>
+                Wallet Connected
+              </div>
+              
+              <div className="profile-info flex space-y-4">
+                <div className="profile-info-leftimg">
+                  <Image 
+                    src={`/samples/userinfo/${walletAddress}.png`}
+                    width="100"
+                    height="100"
+                    alt=""
+                  />
+                </div>
+                <div className="profile-info-righttext">
+                  <p>{userProfile.name}</p>
+                  <p>{userProfile.funFact}</p>
+                  <p>{userProfile.hobby}</p>
+                  <p>{userProfile.interest}</p>
+                  <p>{userProfile.job}</p>
+                </div>
+              </div>
             </div>
           ) : (
             <button
@@ -95,23 +115,6 @@ export default function Home() {
             </button>
           )
           }
-          <div className="profile-info flex space-y-4">
-            <div className="profile-info-leftimg">
-              <Image 
-                src={`/samples/userinfo/${walletAddress}.png`}
-                width="100"
-                height="100"
-                alt=""
-              />
-            </div>
-            <div className="profile-info-righttext">
-              <p>{userProfile.current.name}</p>
-              <p>{userProfile.current.funFact}</p>
-              <p>{userProfile.current.hobby}</p>
-              <p>{userProfile.current.interest}</p>
-              <p>{userProfile.current.job}</p>
-            </div>
-          </div>
         </div>
       </main>
     </div>
