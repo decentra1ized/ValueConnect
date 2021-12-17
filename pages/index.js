@@ -15,25 +15,33 @@ export default function Home() {
   useEffect( () => {
     if(! hasEthereum()) {
       setConnectedWalletAddressState(`MetaMask unavailable`)
+      window.addEventListener('ethereum#initialized', () => {
+        console.log('window.ethereum connected by event')
+        setConnectedWalletAddress()
+      }, {
+        once: true,
+      })
       return
-    }
-    async function setConnectedWalletAddress() {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner()
-      try {
-        const signerAddress = await signer.getAddress()
-        setConnectedWalletAddressState(`Connected wallet: ${signerAddress}`)
-      } catch {
-        setConnectedWalletAddressState('No wallet connected')
-        return;
-      }
     }
     setConnectedWalletAddress();
   },[])
   
+  async function setConnectedWalletAddress() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await window.ethereum.enable()
+    const signer = provider.getSigner()
+    try {
+      const signerAddress = await signer.getAddress()
+      setConnectedWalletAddressState(`Connected wallet: ${signerAddress}`)
+    } catch {
+      setConnectedWalletAddressState('No wallet connected')
+      return
+    }
+  }
+
   // Request access to MetaMask account
   async function requestAccount() {
-    await window.ethereum.request({ method: 'eth_requestAccounts' } )
+    return await window.ethereum.request({ method: 'eth_requestAccounts' } )
   }
 
   // Call smart contract, fetch current value
@@ -73,6 +81,15 @@ export default function Home() {
     setNewGreetingMessageState(`Greeting updated to ${newGreeting} from ${greeting}.`)
     newGreetingInputRef.current.value = ''
     setNewGreetingState('')
+  }
+
+  async function manualConnectWallet() {
+    if( hasEthereum() ) {
+      await window.ethereum.enable()
+      const address = await requestAccount()
+
+      console.log(address)
+    }
   }
 
   return (
@@ -125,6 +142,12 @@ export default function Home() {
                     <div className="h-2">
                       { newGreetingMessage && <span className="text-sm text-gray-500 italic">{newGreetingMessage}</span> }
                     </div>
+                    <button
+                      className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
+                      onClick={manualConnectWallet}
+                    >
+                      connect Metamask
+                    </button>
                   </div>
                 </div>
                 <div className="h-4">
