@@ -8,16 +8,18 @@ export default function Home() {
   const [greeting, setGreetingState] = useState('')
   const [newGreeting, setNewGreetingState] = useState('')
   const [newGreetingMessage, setNewGreetingMessageState] = useState('')
-  const [connectedWalletAddress, setConnectedWalletAddressState] = useState('')
+  const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
+  const [walletAddress, setWalletAddress] = useState('')
   const newGreetingInputRef = useRef();
 
   // If wallet is already connected...
   useEffect( () => {
     if(! hasEthereum()) {
       setConnectedWalletAddressState(`MetaMask unavailable`)
-      window.addEventListener('ethereum#initialized', () => {
+      window.addEventListener('ethereum#initialized', async () => {
         console.log('window.ethereum connected by event')
         setConnectedWalletAddress()
+        setWalletAddress(await requestAccount())
       }, {
         once: true,
       })
@@ -33,9 +35,19 @@ export default function Home() {
     try {
       const signerAddress = await signer.getAddress()
       setConnectedWalletAddressState(`Connected wallet: ${signerAddress}`)
+      setWalletAddress(signerAddress)
     } catch {
       setConnectedWalletAddressState('No wallet connected')
       return
+    }
+  }
+  async function manualConnectWallet() {
+    if( hasEthereum() ) {
+      await window.ethereum.enable()
+      const address = await requestAccount()
+      setConnectedWalletAddress()
+      setWalletAddress(address[0])
+      console.log(address)
     }
   }
 
@@ -81,15 +93,6 @@ export default function Home() {
     setNewGreetingMessageState(`Greeting updated to ${newGreeting} from ${greeting}.`)
     newGreetingInputRef.current.value = ''
     setNewGreetingState('')
-  }
-
-  async function manualConnectWallet() {
-    if( hasEthereum() ) {
-      await window.ethereum.enable()
-      const address = await requestAccount()
-
-      console.log(address)
-    }
   }
 
   return (
@@ -142,12 +145,19 @@ export default function Home() {
                     <div className="h-2">
                       { newGreetingMessage && <span className="text-sm text-gray-500 italic">{newGreetingMessage}</span> }
                     </div>
-                    <button
-                      className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
-                      onClick={manualConnectWallet}
-                    >
-                      connect Metamask
-                    </button>
+                    { walletAddress ? (
+                      <div>
+                        Wallet Connected
+                      </div>
+                    ) : (
+                      <button
+                        className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
+                        onClick={manualConnectWallet}
+                      >
+                        connect Metamask
+                      </button>
+                    )
+                    }
                   </div>
                 </div>
                 <div className="h-4">
