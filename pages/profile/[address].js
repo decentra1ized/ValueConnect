@@ -1,6 +1,7 @@
 //// http://웹사이트주소/profile/[프로필볼 대상의 eth 주소]
 
 import Head from 'next/head'
+import Image from 'next/image'
 import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { ethers } from 'ethers'
@@ -96,13 +97,22 @@ export default function Home() {
           { isloading ? <NowLoading /> : 
             <div>
               {userProfile ? 
-              
-              <div className="profile-info-righttext">
-                <p>이름 : {userProfile.name}</p>
-                <p>소개 : {userProfile.funFact}</p>
-                <p>취미 : {userProfile.hobby}</p>
-                <p>취향 : {userProfile.interest}</p>
-                <p>직업 : {userProfile.job}</p>
+              <div>
+                <div className="profile-info-leftimg">
+                  <Image 
+                    src={`/samples/userinfo/${walletAddress}.png`}
+                    width="120"
+                    height="120"
+                    alt=""
+                  />
+                </div>
+                <div className="profile-info-righttext">
+                  <p>이름 : {userProfile.name}</p>
+                  <p>소개 : {userProfile.funFact}</p>
+                  <p>취미 : {userProfile.hobby}</p>
+                  <p>취향 : {userProfile.interest}</p>
+                  <p>직업 : {userProfile.job}</p>
+                </div>
               </div>
               :
               <div>
