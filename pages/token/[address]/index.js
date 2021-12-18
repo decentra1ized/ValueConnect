@@ -63,7 +63,8 @@ export default function Home() {
     for await(const tokenId of tokenList) {
       // get token infos to show user token list...
       const tokenInfo = await contract.functions.getnftdatamapping(tokenId)
-      tokenInfoList[tokenId] = tokenInfo
+      const parsed = ethers.utils.parseBytes32String(tokenInfo[0])
+      tokenInfoList[tokenId] = JSON.parse(parsed)
     }
     setPageTokenList(tokenList)
     console.log(tokenList, tokenInfoList)
