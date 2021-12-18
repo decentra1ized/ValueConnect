@@ -56,9 +56,9 @@ export default function Home() {
           <div className="big">
             <div className="left">
               <span style={{padding: 0, display: 'inline'}}>
-                <img className="menu" src="../../img/m1.png" alt="" /><br />
-                <img className="menu" src="../../img/m2.png" alt="" /><br />
-                <img className="menu" src="../../img/m3.png" alt="" /> 
+                <img className="menu" src="img/m1.png" alt="" />
+                <img className="menu" src="img/m2.png" alt="" />
+                <img className="menu" src="img/m3.png" alt="" /> 
               </span>
             </div>
             <div className="right">
@@ -78,19 +78,19 @@ export default function Home() {
                     <div className="row">
                       <div className="col-sm-12">         
                         <div className="branch" id="b1" style={{marginLeft: '5%'}}>
-                          <img src="../../img/circle-blue.png" style={{display: 'none', width: '80%'}} alt="" />
+                          <img src="img/circle-blue.png" style={{display: 'none', width: '70%', marginLeft: '0%'}} alt="" />
                         </div>
                         <div className="branch" id="b2">
-                          <img src="../../img/circle-purple.png" style={{width: '70%'}} alt="" />
+                          <img src="img/circle-purple.png" style={{width: '70%', marginRight: '0'}} alt="" />
                         </div>
                         <div className="branch" id="b3">
-                          <img src="../../img/circle-green.png" style={{display: 'none'}} alt="" />
+                          <img src="img/circle-green.png" style={{display: 'none', marginRight: '0'}} alt="" />
                         </div>
                         <div className="branch" id="b4">
-                          <img src="../../img/circle-yellow.png" style={{width: '70%'}} alt="" />
+                          <img src="img/circle-yellow.png" style={{width: '70%', marginRight: '0'}} alt="" />
                         </div>
                         <div className="branch" id="b5">
-                          <img src="../../img/circle-red.png" style={{display: 'none'}} alt="" />
+                          <img src="img/circle-red.png" style={{display: 'none', marginRight: '0'}} alt="" />
                         </div>
                       </div>
                     </div>
@@ -118,19 +118,19 @@ export default function Home() {
                     <div className="row">
                       <div className="col-sm-12">
                         <div className="branch" id="b1" style={{marginLeft: '5%'}}>
-                          <img src="../../img/result-blue.png" alt="" />
+                          <img src="img/result-blue.png" alt="" />
                         </div>
                         <div className="branch" id="b2">
-                          <img src="../../img/result-purple.png" style={{display: 'none'}} alt="" />
+                          <img src="img/result-purple.png" style={{display: 'none'}} alt="" />
                         </div>
                         <div className="branch" id="b3">
-                          <img src="../../img/result-green.png" alt="" />
+                          <img src="img/result-green.png" alt="" />
                         </div>
                         <div className="branch" id="b4">
-                          <img src="../../img/result-yellow.png" style={{display: 'none'}} alt="" />
+                          <img src="img/result-yellow.png" style={{display: 'none'}} alt="" />
                         </div>
                         <div className="branch" id="b5">
-                          <img src="../../img/result-red.png" alt="" />
+                          <img src="img/result-red.png" alt="" />
                         </div>
                       </div>
                     </div>
