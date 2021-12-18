@@ -59,11 +59,13 @@ export default function Home() {
     }
     const contract = new ethers.Contract(TokenContract, ERCABI, provider.getSigner())
     console.log('before call contract')
-    const tokenList = (await contract.functions.getlist(address)).map(e => Number.parseInt(e))
+    const tokenList = (await contract.getlist(address)).map(e => Number.parseInt(e))
+    console.log('after call contract', tokenList)
     for await(const tokenId of tokenList) {
       // get token infos to show user token list...
       const tokenInfo = await contract.functions.getnftdatamapping(tokenId)
-      tokenInfoList[tokenId] = tokenInfo
+      const parsed = ethers.utils.parseBytes32String(tokenInfo[0])
+      tokenInfoList[tokenId] = JSON.parse(parsed)
     }
     setPageTokenList(tokenList)
     console.log(tokenList, tokenInfoList)
