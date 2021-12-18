@@ -88,21 +88,21 @@ export default function Home() {
                 Wallet Connected
               </div>
               
-              <div className="profile-info flex space-y-4">
+              <div className="profile-info flex space-y-2">
                 <div className="profile-info-leftimg">
                   <Image 
                     src={`/samples/userinfo/${walletAddress}.png`}
-                    width="100"
-                    height="100"
+                    width="120"
+                    height="120"
                     alt=""
                   />
                 </div>
                 <div className="profile-info-righttext">
-                  <p>{userProfile.name}</p>
-                  <p>{userProfile.funFact}</p>
-                  <p>{userProfile.hobby}</p>
-                  <p>{userProfile.interest}</p>
-                  <p>{userProfile.job}</p>
+                  <p>이름 : {userProfile.name}</p>
+                  <p>소개 : {userProfile.funFact}</p>
+                  <p>취미 : {userProfile.hobby}</p>
+                  <p>취향 : {userProfile.interest}</p>
+                  <p>직업 : {userProfile.job}</p>
                 </div>
               </div>
             </div>

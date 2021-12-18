@@ -1,6 +1,21 @@
 .profile {
+  font-size: 14px;
 }
 
 .profile-header {
-  
+  font-size: 16px;
+}
+
+.profile-info {
+  border: 1px solid #eeeeee;
+  border-radius: 20px;
+  padding: 20px;
+}
+.profile-info-leftimg {
+  margin: auto 0;
+  padding: 0 32px 0 8px;
+}
+.profile-info-righttext {
+  text-align: left;
+  font-size: 16px;
 }
