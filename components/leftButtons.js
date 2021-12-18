@@ -22,9 +22,9 @@ export default function Buttons() {
   return(
     <div className="left">
       <span style={{padding: 0, display: 'inline'}}>
-        <img className="menu" src="img/m1.png" alt="" onClick={onClickNetworking} />
-        <img className="menu" src="img/m2.png" alt="" onClick={onClickTransaction} />
-        <img className="menu" src="img/m3.png" alt="" onClick={onClickProfile} /> 
+        <img className="menu" src="/img/m1.png" alt="" onClick={onClickNetworking} />
+        <img className="menu" src="/img/m2.png" alt="" onClick={onClickTransaction} />
+        <img className="menu" src="/img/m3.png" alt="" onClick={onClickProfile} /> 
       </span>
     </div>
   )

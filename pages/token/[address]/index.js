@@ -5,6 +5,7 @@ import { ethers } from 'ethers'
 import {checkAccountExist, hasEthereum} from '../../../utils/ethereum'
 import ERCABI from '../../../constants/abi/new-erc1155.json'
 import { TokenContract } from '../../../constants/contracts'
+import Buttons from '../../../components/leftButtons'
 
 function TokenInfo({tokenInfo}) {
   if(!tokenInfo) {
@@ -72,12 +73,17 @@ export default function Home() {
   }
 
   return (
-    <div>
-      {pageTokenList.map(t => {
-        return (
-          <TokenInfo key={t} tokenInfo={tokenInfoList[t]} />
-        )
-      })}
+    <div className="big">
+      <Buttons />
+      <div className="right">
+        <div className=" ml-24 mt-24">
+          {pageTokenList.map(t => {
+            return (
+              <TokenInfo key={t} tokenInfo={tokenInfoList[t]} />
+            )
+          })}
+        </div>
+      </div>
     </div>
   )
 }

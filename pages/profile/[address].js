@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { ethers } from 'ethers'
 import { hasEthereum } from '../../utils/ethereum'
 import axios from 'axios'
+import Buttons from '../../components/leftButtons'
 
 const NowLoading = () => <div>Now Loading......</div>
 
@@ -69,15 +70,16 @@ export default function Home() {
   }
 
   return (
-    <div className="max-w-lg mt-36 mx-auto text-center px-4">
+    <div className="">
       <Head>
         <title>User Profile</title>
         <meta name="description" content="Interact with a simple smart contract from the client-side." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="space-y-8">
-        <div className="space-y-8">
+      <div className="big">
+        <Buttons />
+        <div className="right">
           <div className="flex flex-col space-y-4">
             { address } profile
             { walletAddress ? (
@@ -122,7 +124,7 @@ export default function Home() {
             </div>
           }
         </div>
-      </main>
+      </div>
     </div>
   )
 }
