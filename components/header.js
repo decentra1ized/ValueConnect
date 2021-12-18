@@ -11,8 +11,8 @@ export default function Buttons(props) {
   
   return(
     <div className="">
-      <h2>ValueConnect</h2>
-      <h1>{props.title}</h1>
+      <h2 style={{fontSize:"0.5em"}}>ValueConnect</h2>
+      <h1 style={{fontSize:"1.3em"}}>{props.title}</h1>
       <div className="d-grid gap-2 d-md-flex justify-content-md-end">
         <button id="bt" type="button" className="btn btn-secondary btn-sm">Wallet address</button> 
         <button id="bt" type="button" className="btn btn-secondary btn-sm" style={{marginRight: '9vw', background: 'url("/img/metamask.png")', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%'}}>&nbsp;&nbsp;&nbsp;&nbsp;</button> 

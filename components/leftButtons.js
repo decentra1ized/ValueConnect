@@ -10,10 +10,10 @@ export default function Buttons() {
   }, [router.isReady])
 
   const onClickNetworking = () => {
-    // router.push()
+    router.push('/relate')
   }
   const onClickTransaction = () => {
-    router.push('/relate')
+    router.push('/Transaction')
   }
   const onClickProfile = () => {
     router.push('/profile')

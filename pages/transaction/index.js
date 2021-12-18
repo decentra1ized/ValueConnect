@@ -3,16 +3,12 @@ import { useEffect, useState, useRef } from 'react'
 import { ethers } from 'ethers'
 import { hasEthereum } from '../../utils/ethereum'
 
-
-import ERC1155ABI from '../../constants/abi/new-erc1155.json'
-import { TokenContract } from '../../constants/contracts'
 import Buttons from '../../components/leftButtons'
 import Header from '../../components/header'
 
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
   const [walletAddress, setWalletAddress] = useState('')
-
   
   useEffect( () => {
     if(! hasEthereum()) {
@@ -43,7 +39,6 @@ export default function Home() {
       return
     }
   }
-
   async function manualConnectWallet() {
     if( hasEthereum() ) {
       await window.ethereum.enable()
@@ -54,18 +49,10 @@ export default function Home() {
     }
   }
 
-  async function visualization(){
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
-    const contract = new ethers.Contract(TokenContract, ERC1155ABI, provider.getSigner())
-    const contractResult = await contract.getlist(walletAddress);
-    console.log(contractResult)
-    return contractResult
-  }
-
   return (
         <div>
-          <title>Networking</title>
-          <div className="big">
+          <title>Transaction</title>
+          {/* <div className="big">
             <Buttons />
             <div className="right">
               <div className="container-fluid">
@@ -78,19 +65,19 @@ export default function Home() {
                     <div className="row">
                       <div className="col-sm-12">         
                         <div className="branch" id="b1" style={{marginLeft: '5%'}}>
-                          <img src="img/circle-blue.png" style={{visibility: visualization().length() < 6 ? 'visible' : 'hidden', width: '70%', marginLeft: '0%'}} title = "" alt="" />
+                          <img src="img/circle-blue.png" style={{visibility: 'hidden', width: '70%', marginLeft: '0%'}} alt="" />
                         </div>
                         <div className="branch" id="b2">
                           <img src="img/circle-purple.png" style={{visibility: 'hidden', width: '70%', marginRight: '0'}} alt="" />
                         </div>
                         <div className="branch" id="b3">
-                          <img src="img/circle-green.png" style={{visibility: visualization().length() < 4 ? 'visible' : 'hidden', marginRight: '0'}} title = "" alt="" />
+                          <img src="img/circle-green.png" style={{visibility: 'hidden', marginRight: '0'}} alt="" />
                         </div>
                         <div className="branch" id="b4">
                           <img src="img/circle-yellow.png" style={{visibility: 'hidden', width: '70%', marginRight: '0'}} alt="" />
                         </div>
                         <div className="branch" id="b5">
-                          <img src="img/circle-red.png" style={{visibility: visualization().length() < 2 ? 'visible' : 'hidden', marginRight: '0'}} title = "" alt="" />
+                          <img src="img/circle-red.png" style={{visibility: 'hidden', marginRight: '0'}} alt="" />
                         </div>
                       </div>
                     </div>
@@ -121,13 +108,13 @@ export default function Home() {
                           <img src="img/result-blue.png" alt="" />
                         </div>
                         <div className="branch" id="b2">
-                          <img src="img/result-purple.png" style={{visibility: visualization().length() < 5 ? 'visible' : 'hidden'}} title = "" alt="" />
+                          <img src="img/result-purple.png" style={{visibility: 'hidden'}} alt="" />
                         </div>
                         <div className="branch" id="b3">
                           <img src="img/result-green.png" style={{visibility: 'hidden'}} alt="" />
                         </div>
                         <div className="branch" id="b4">
-                          <img src="img/result-yellow.png" style={{visibility: visualization().length() < 3 ? 'visible' : 'hidden',}} title = "" alt="" />
+                          <img src="img/result-yellow.png" style={{visibility: 'hidden'}} alt="" />
                         </div>
                         <div className="branch" id="b5">
                           <img src="img/result-red.png" style={{visibility: 'hidden'}} alt="" />
@@ -138,7 +125,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
   )
 }
