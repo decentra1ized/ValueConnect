@@ -3,6 +3,8 @@ import { useEffect, useState, useRef } from 'react'
 import { ethers } from 'ethers'
 import { hasEthereum } from '../../utils/ethereum'
 
+import Buttons from '../../components/leftButtons'
+
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
   const [walletAddress, setWalletAddress] = useState('')
@@ -52,15 +54,8 @@ export default function Home() {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" />
           <title>Networking</title>
-          <style dangerouslySetInnerHTML={{__html: "\n    img{\n        width:100%;\n    }\n    div.branch{\n        display: inline-block;\n        width:16%;\n    }\n    div.big {\n        width: 100%;\n    }\n    div.left {\n        width: 4%;\n        float: left;\n        box-sizing: border-box;\n    }\n    div.right {\n        width: 96%;\n        float: right;\n    }\n    div.branch{\n        text-align: center;\n    }\n    h1{\n        font-size:1.3em;\n    }\n    h2{\n        font-size: 0.5em;\n    }\n    #bt{\n        z-index: 2;\n        position: fixed;\n    }\n" }} />
           <div className="big">
-            <div className="left">
-              <span style={{padding: 0, display: 'inline'}}>
-                <img className="menu" src="img/m1.png" alt="" />
-                <img className="menu" src="img/m2.png" alt="" />
-                <img className="menu" src="img/m3.png" alt="" /> 
-              </span>
-            </div>
+            <Buttons />
             <div className="right">
               <div className="container-fluid">
                 <div className="row">

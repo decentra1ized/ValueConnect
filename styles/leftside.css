@@ -1,0 +1,32 @@
+img {
+  width: 100%;
+}
+div.branch {
+  display: inline-block;
+  width: 16%;
+}
+div.big {
+  width: 100%;
+}
+div.left {
+  width: 4%;
+  float: left;
+  box-sizing: border-box;
+}
+div.right {
+  width: 96%;
+  float: right;
+}
+div.branch {
+  text-align: center;
+}
+h1 {
+  font-size: 1.3em;
+}
+h2 {
+  font-size: 0.5em;
+}
+#bt {
+  z-index: 2;
+  position: fixed;
+}

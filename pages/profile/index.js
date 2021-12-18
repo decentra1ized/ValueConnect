@@ -6,6 +6,8 @@ import { ethers } from 'ethers'
 import { hasEthereum } from '../../utils/ethereum'
 import axios from 'axios'
 
+import Buttons from '../../components/leftButtons'
+
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
   const [walletAddress, setWalletAddress] = useState('')
@@ -72,14 +74,14 @@ export default function Home() {
   }
 
   return (
-    <div className="profile max-w-lg mt-36 mx-auto text-center px-4">
+    <div className="big profile">
       <Head>
         <title>Solidity Next.js Starter</title>
         <meta name="description" content="Interact with a simple smart contract from the client-side." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className="space-y-8">
+      <Buttons />
+      <div className="right">
         <div className="profile-header flex flex-col space-y-4">
           this is profile index page
           { walletAddress ? (
@@ -116,7 +118,7 @@ export default function Home() {
           )
           }
         </div>
-      </main>
+      </div>
     </div>
   )
 }
