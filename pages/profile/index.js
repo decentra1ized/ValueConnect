@@ -70,7 +70,7 @@ export default function Home() {
       setUserProfile(userProfileFile)
     } catch(e) {
       console.error(e)
-      router.push('/')
+      router.push('/profile/signin')
     }
   }
 
