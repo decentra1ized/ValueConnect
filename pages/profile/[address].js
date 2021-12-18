@@ -5,12 +5,29 @@ import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { ethers } from 'ethers'
 import { hasEthereum } from '../../utils/ethereum'
+import axios from 'axios'
+import { LogDescription } from '@ethersproject/abi'
+
+const NowLoading = () => <div>Now Loading......</div>
 
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
   const [walletAddress, setWalletAddress] = useState('')
+  const [isloading, setIsLoading] = useState(true)
+  const [isNotExist, setIsNotExis] = useState(false) //data not exist
   const router = useRouter()
   const { address } = router.query
+
+  const [userProfile, setUserProfile] = useState(undefined)
+  useEffect(() => {
+    if(!router.isReady) return
+    axios.get(`/samples/userinfo/${address}.json`).then((data) => {
+      setIsLoading(false)
+      setUserProfile(data.data)
+    }).catch((e) => {
+      setIsLoading(false)
+    })
+  }, [router.isReady])
   
   useEffect( () => {
     if(! hasEthereum()) {
@@ -76,6 +93,24 @@ export default function Home() {
             )
             }
           </div>
+          { isloading ? <NowLoading /> : 
+            <div>
+              {userProfile ? 
+              
+              <div className="profile-info-righttext">
+                <p>이름 : {userProfile.name}</p>
+                <p>소개 : {userProfile.funFact}</p>
+                <p>취미 : {userProfile.hobby}</p>
+                <p>취향 : {userProfile.interest}</p>
+                <p>직업 : {userProfile.job}</p>
+              </div>
+              :
+              <div>
+                Oops! User not exist
+              </div>
+              }
+            </div>
+          }
         </div>
       </main>
     </div>
