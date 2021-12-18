@@ -116,8 +116,8 @@ export default function Home() {
                       <p>이름 : {userProfile.name}</p>
                       <p>성별 : {userProfile.gender}</p>
                       <p>나이 : {userProfile.age}</p>
-                      <p>미디어 : {userProfile.socialMedia.join(', ')}</p>
-                      <p>취향 : {userProfile.interest.join(', ')}</p>
+                      <p>미디어 : {userProfile.socialMedia ? userProfile.socialMedia.join(', ') : ''}</p>
+                      <p>취향 : {userProfile.interest ? userProfile.interest.join(', ') : ''}</p>
                     </div>
                   </div>
                   :
