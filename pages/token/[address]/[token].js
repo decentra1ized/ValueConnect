@@ -1,34 +1,24 @@
-//// http://웹사이트주소/profile/[프로필볼 대상의 eth 주소]
+////copy this file for easy web3 connect initialize.
 
 import Head from 'next/head'
 import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { ethers } from 'ethers'
-import { hasEthereum } from '../../utils/ethereum'
-import axios from 'axios'
-
-const NowLoading = () => <div>Now Loading......</div>
+import { hasEthereum } from '../../../utils/ethereum'
 
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
   const [walletAddress, setWalletAddress] = useState('')
-  const [isloading, setIsLoading] = useState(true)
-  const [isNotExist, setIsNotExis] = useState(false) //data not exist
   const router = useRouter()
-  const { address } = router.query
-
-  const [userProfile, setUserProfile] = useState(undefined)
-
+  const {address, token} = router.query
+  
   useEffect(() => {
     if(!router.isReady) return
-    axios.get(`/samples/userinfo/${address}.json`).then((data) => {
-      setIsLoading(false)
-      setUserProfile(data.data)
-    }).catch((e) => {
-      setIsLoading(false)
-    })
+    if(!address || token) {
+      router.push('/')
+    }
   }, [router.isReady])
-  
+
   useEffect( () => {
     if(! hasEthereum()) {
       setConnectedWalletAddressState(`MetaMask unavailable`)
@@ -70,7 +60,7 @@ export default function Home() {
   return (
     <div className="max-w-lg mt-36 mx-auto text-center px-4">
       <Head>
-        <title>User Profile</title>
+        <title>Solidity Next.js Starter</title>
         <meta name="description" content="Interact with a simple smart contract from the client-side." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -78,7 +68,7 @@ export default function Home() {
       <main className="space-y-8">
         <div className="space-y-8">
           <div className="flex flex-col space-y-4">
-            { address } profile
+            this is profile index page
             { walletAddress ? (
               <div>
                 Wallet Connected
@@ -93,24 +83,6 @@ export default function Home() {
             )
             }
           </div>
-          { isloading ? <NowLoading /> : 
-            <div>
-              {userProfile ? 
-              
-              <div className="profile-info-righttext">
-                <p>이름 : {userProfile.name}</p>
-                <p>소개 : {userProfile.funFact}</p>
-                <p>취미 : {userProfile.hobby}</p>
-                <p>취향 : {userProfile.interest}</p>
-                <p>직업 : {userProfile.job}</p>
-              </div>
-              :
-              <div>
-                Oops! User not exist
-              </div>
-              }
-            </div>
-          }
         </div>
       </main>
     </div>
