@@ -6,6 +6,7 @@ import {checkAccountExist, hasEthereum} from '../../../utils/ethereum'
 import ERCABI from '../../../constants/abi/new-erc1155.json'
 import { TokenContract } from '../../../constants/contracts'
 import Buttons from '../../../components/leftButtons'
+import Header from '../../../components/header'
 
 function TokenInfo({tokenInfo}) {
   if(!tokenInfo) {
@@ -13,8 +14,7 @@ function TokenInfo({tokenInfo}) {
   }
   const tokenKeys = Object.keys(tokenInfo)
   return (
-    <div>
-      thisistokeninfocomponent
+    <div className="token-list-item">
       {tokenKeys.map(t => {
         return (<p key={t}>{t + ': ' + tokenInfo[t]}</p>)
       })}
@@ -76,12 +76,17 @@ export default function Home() {
     <div className="big">
       <Buttons />
       <div className="right">
-        <div className=" ml-24 mt-24">
-          {pageTokenList.map(t => {
-            return (
-              <TokenInfo key={t} tokenInfo={tokenInfoList[t]} />
-            )
-          })}
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-sm-12" style={{paddingLeft: '2%', paddingTop: '1%', paddingRight: '2%'}}>
+              <Header title="Token List" />
+              {pageTokenList.map(t => {
+                return (
+                  <TokenInfo key={t} tokenInfo={tokenInfoList[t]} />
+                )
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>

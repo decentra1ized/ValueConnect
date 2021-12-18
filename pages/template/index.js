@@ -5,6 +5,9 @@ import { useEffect, useState, useRef } from 'react'
 import { ethers } from 'ethers'
 import { hasEthereum } from '../../utils/ethereum'
 
+import Buttons from '../../components/leftButtons'
+import Header from '../../components/header'
+
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
   const [walletAddress, setWalletAddress] = useState('')

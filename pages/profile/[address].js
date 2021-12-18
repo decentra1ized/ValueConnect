@@ -8,6 +8,7 @@ import { ethers } from 'ethers'
 import { hasEthereum } from '../../utils/ethereum'
 import axios from 'axios'
 import Buttons from '../../components/leftButtons'
+import Header from '../../components/header'
 
 const NowLoading = () => <div>Now Loading......</div>
 
@@ -80,49 +81,54 @@ export default function Home() {
       <div className="big">
         <Buttons />
         <div className="right">
-          <div className="flex flex-col space-y-4">
-            { address } profile
-            { walletAddress ? (
-              <div>
-                Wallet Connected
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-sm-12" style={{paddingLeft: '2%', paddingTop: '1%', paddingRight: '2%'}}>
+                <Header title="User Profile" />
+                { address } profile
+                { walletAddress ? (
+                  <div>
+                    Wallet Connected
+                  </div>
+                ) : (
+                  <button
+                    className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
+                    onClick={manualConnectWallet}
+                  >
+                    connect Metamask
+                  </button>
+                )
+                }
               </div>
-            ) : (
-              <button
-                className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
-                onClick={manualConnectWallet}
-              >
-                connect Metamask
-              </button>
-            )
-            }
-          </div>
-          { isloading ? <NowLoading /> : 
-            <div>
-              {userProfile ? 
-              <div>
-                <div className="profile-info-leftimg">
-                  <Image 
-                    src={`/samples/userinfo/${walletAddress}.png`}
-                    width="120"
-                    height="120"
-                    alt=""
-                  />
+              { isloading ? <NowLoading /> : 
+                <div>
+                  {userProfile ? 
+                  <div>
+                    <div className="profile-info-leftimg">
+                      <Image 
+                        src={`/samples/userinfo/${walletAddress}.png`}
+                        width="120"
+                        height="120"
+                        alt=""
+                      />
+                    </div>
+                    <div className="profile-info-righttext">
+                      <p>이름 : {userProfile.name}</p>
+                      <p>소개 : {userProfile.funFact}</p>
+                      <p>취미 : {userProfile.hobby}</p>
+                      <p>취향 : {userProfile.interest}</p>
+                      <p>직업 : {userProfile.job}</p>
+                    </div>
+                  </div>
+                  :
+                  <div>
+                    Oops! User not exist
+                  </div>
+                  }
                 </div>
-                <div className="profile-info-righttext">
-                  <p>이름 : {userProfile.name}</p>
-                  <p>소개 : {userProfile.funFact}</p>
-                  <p>취미 : {userProfile.hobby}</p>
-                  <p>취향 : {userProfile.interest}</p>
-                  <p>직업 : {userProfile.job}</p>
-                </div>
-              </div>
-              :
-              <div>
-                Oops! User not exist
-              </div>
               }
             </div>
-          }
+          </div>
         </div>
       </div>
     </div>

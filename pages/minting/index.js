@@ -8,6 +8,7 @@ import { hasEthereum } from '../../utils/ethereum'
 import ERC1155ABI from '../../constants/abi/new-erc1155.json'
 import { TokenContract } from '../../constants/contracts'
 import Buttons from '../../components/leftButtons'
+import Header from '../../components/header'
 
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
@@ -106,51 +107,55 @@ export default function Home() {
       <div className="big">
         <Buttons />
         <div className="right">
-          <div className="flex flex-col space-y-4 ml-24 mt-24">
-            this is profile index page
-            { walletAddress ? (
-              <div>
-                <div>
-                  Wallet Connected
-                </div>
-                <div>
-                  <input
-                    className="border p-4 text-center"
-                    placeholder="token additional data"
-                    ref={erc1155DataInput}
-                  />
-                </div>
-                <div>
-                  <input
-                    className="border p-4 text-center"
-                    placeholder="token uri data"
-                    ref={erc1155URIInput}
-                  />
-                </div>
-                <div>
-                  <input
-                    className="border p-4 text-center"
-                    placeholder="token minting count"
-                    type="number"
-                    ref={erc1155MintingCountInput}
-                  />
-                </div>
-                <button
-                  className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
-                  onClick={onClickMinting}
-                >
-                  Minting
-                </button>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-sm-12" style={{paddingLeft: '2%', paddingTop: '1%', paddingRight: '2%'}}>
+                <Header title="Mint Token" />
+                { walletAddress ? (
+                  <div>
+                    <div>
+                      Wallet Connected
+                    </div>
+                    <div>
+                      <input
+                        className="border p-4 text-center"
+                        placeholder="token additional data"
+                        ref={erc1155DataInput}
+                      />
+                    </div>
+                    <div>
+                      <input
+                        className="border p-4 text-center"
+                        placeholder="token uri data"
+                        ref={erc1155URIInput}
+                      />
+                    </div>
+                    <div>
+                      <input
+                        className="border p-4 text-center"
+                        placeholder="token minting count"
+                        type="number"
+                        ref={erc1155MintingCountInput}
+                      />
+                    </div>
+                    <button
+                      className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
+                      onClick={onClickMinting}
+                    >
+                      Minting
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
+                    onClick={manualConnectWallet}
+                  >
+                    connect Metamask
+                  </button>
+                )
+                }
               </div>
-            ) : (
-              <button
-                className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
-                onClick={manualConnectWallet}
-              >
-                connect Metamask
-              </button>
-            )
-            }
+            </div>
           </div>
         </div>
       </div>

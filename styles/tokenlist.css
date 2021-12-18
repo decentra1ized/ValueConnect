@@ -1,0 +1,10 @@
+.token-list-item {
+  display: inline-block;
+  margin: 8px;
+  min-width: 240px;
+  min-height: 120px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #eeeeee;
+  background-color: #eeeeee;
+}

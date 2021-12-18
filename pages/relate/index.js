@@ -4,6 +4,7 @@ import { ethers } from 'ethers'
 import { hasEthereum } from '../../utils/ethereum'
 
 import Buttons from '../../components/leftButtons'
+import Header from '../../components/header'
 
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
@@ -49,10 +50,6 @@ export default function Home() {
 
   return (
         <div>
-          <meta charSet="UTF-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" />
           <title>Networking</title>
           <div className="big">
             <Buttons />
@@ -60,13 +57,7 @@ export default function Home() {
               <div className="container-fluid">
                 <div className="row">
                   <div className="col-sm-12" style={{paddingLeft: '2%', paddingTop: '1%', paddingRight: '2%'}}>
-                    <h2>ValueConnect</h2>
-                    <h1>Networking</h1>
-                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                      <button id="bt" type="button" className="btn btn-secondary btn-sm">Wallet address</button> 
-                      <button id="bt" type="button" className="btn btn-secondary btn-sm" style={{marginRight: '9vw', background: 'url("img/metamask.png")', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%'}}>&nbsp;&nbsp;&nbsp;&nbsp;</button> 
-                      <div style={{backgroundColor: 'rgb(221, 221, 221)', position: 'absolute', width: '90%', height: '2px', marginLeft: '1%', marginRight: '2.5%'}} /> 
-                    </div>
+                    <Header title="Networking"/>
                     <br />
                     <br />
                     <br />  

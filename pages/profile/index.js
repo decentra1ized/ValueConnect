@@ -7,6 +7,7 @@ import { hasEthereum } from '../../utils/ethereum'
 import axios from 'axios'
 
 import Buttons from '../../components/leftButtons'
+import Header from '../../components/header'
 
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
@@ -82,41 +83,45 @@ export default function Home() {
       </Head>
       <Buttons />
       <div className="right">
-        <div className="profile-header flex flex-col space-y-4">
-          this is profile index page
-          { walletAddress ? (
-            <div>
-              <div>
-                Wallet Connected
-              </div>
-              
-              <div className="profile-info flex space-y-2">
-                <div className="profile-info-leftimg">
-                  <Image 
-                    src={`/samples/userinfo/${walletAddress}.png`}
-                    width="120"
-                    height="120"
-                    alt=""
-                  />
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-sm-12" style={{paddingLeft: '2%', paddingTop: '1%', paddingRight: '2%'}}>
+              <Header title="My Profile" />
+              { walletAddress ? (
+                <div>
+                  <div>
+                    Wallet Connected
+                  </div>
+                  
+                  <div className="profile-info flex space-y-2">
+                    <div className="profile-info-leftimg">
+                      <Image 
+                        src={`/samples/userinfo/${walletAddress}.png`}
+                        width="120"
+                        height="120"
+                        alt=""
+                      />
+                    </div>
+                    <div className="profile-info-righttext">
+                      <p>이름 : {userProfile.name}</p>
+                      <p>소개 : {userProfile.funFact}</p>
+                      <p>취미 : {userProfile.hobby}</p>
+                      <p>취향 : {userProfile.interest}</p>
+                      <p>직업 : {userProfile.job}</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="profile-info-righttext">
-                  <p>이름 : {userProfile.name}</p>
-                  <p>소개 : {userProfile.funFact}</p>
-                  <p>취미 : {userProfile.hobby}</p>
-                  <p>취향 : {userProfile.interest}</p>
-                  <p>직업 : {userProfile.job}</p>
-                </div>
-              </div>
+              ) : (
+                <button
+                  className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
+                  onClick={manualConnectWallet}
+                >
+                  connect Metamask
+                </button>
+              )
+              }
             </div>
-          ) : (
-            <button
-              className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
-              onClick={manualConnectWallet}
-            >
-              connect Metamask
-            </button>
-          )
-          }
+          </div>
         </div>
       </div>
     </div>

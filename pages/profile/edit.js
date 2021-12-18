@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from 'react'
 import { ethers } from 'ethers'
 import { hasEthereum } from '../../utils/ethereum'
 import Buttons from '../../components/leftButtons'
+import Header from '../../components/header'
 
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
@@ -59,21 +60,26 @@ export default function Home() {
       <div className="big">
         <Buttons />
         <div className="right">
-          <div className="flex flex-col space-y-4">
-            this is profile index page
-            { walletAddress ? (
-              <div>
-                Wallet Connected
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-sm-12" style={{paddingLeft: '2%', paddingTop: '1%', paddingRight: '2%'}}>
+                <Header title="Edit Profile" />
+                this is profile index page
+                { walletAddress ? (
+                  <div>
+                    Wallet Connected
+                  </div>
+                ) : (
+                  <button
+                    className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
+                    onClick={manualConnectWallet}
+                  >
+                    connect Metamask
+                  </button>
+                )
+                }
               </div>
-            ) : (
-              <button
-                className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
-                onClick={manualConnectWallet}
-              >
-                connect Metamask
-              </button>
-            )
-            }
+            </div>
           </div>
         </div>
       </div>
