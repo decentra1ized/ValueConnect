@@ -24,7 +24,8 @@ export default function Home() {
     }
     setConnectedWalletAddress();
   },[])
-  
+
+
   async function setConnectedWalletAddress() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     await window.ethereum.enable()
@@ -64,19 +65,19 @@ export default function Home() {
                     <div className="row">
                       <div className="col-sm-12">         
                         <div className="branch" id="b1" style={{marginLeft: '5%'}}>
-                          <img src="img/circle-blue.png" style={{display: 'none', width: '70%', marginLeft: '0%'}} alt="" />
+                          <img src="img/circle-blue.png" style={{visibility: 'hidden', width: '70%', marginLeft: '0%'}} alt="" />
                         </div>
                         <div className="branch" id="b2">
-                          <img src="img/circle-purple.png" style={{width: '70%', marginRight: '0'}} alt="" />
+                          <img src="img/circle-purple.png" style={{visibility: 'hidden', width: '70%', marginRight: '0'}} alt="" />
                         </div>
                         <div className="branch" id="b3">
-                          <img src="img/circle-green.png" style={{display: 'none', marginRight: '0'}} alt="" />
+                          <img src="img/circle-green.png" style={{visibility: 'hidden', marginRight: '0'}} alt="" />
                         </div>
                         <div className="branch" id="b4">
-                          <img src="img/circle-yellow.png" style={{width: '70%', marginRight: '0'}} alt="" />
+                          <img src="img/circle-yellow.png" style={{visibility: 'hidden', width: '70%', marginRight: '0'}} alt="" />
                         </div>
                         <div className="branch" id="b5">
-                          <img src="img/circle-red.png" style={{display: 'none', marginRight: '0'}} alt="" />
+                          <img src="img/circle-red.png" style={{visibility: 'hidden', marginRight: '0'}} alt="" />
                         </div>
                       </div>
                     </div>
@@ -103,20 +104,20 @@ export default function Home() {
                     <br /><br /><br />
                     <div className="row">
                       <div className="col-sm-12">
-                        <div className="branch" id="b1" style={{marginLeft: '5%'}}>
+                        <div className="branch" id="b1" style={{visibility: 'hidden', marginLeft: '5%'}}>
                           <img src="img/result-blue.png" alt="" />
                         </div>
                         <div className="branch" id="b2">
-                          <img src="img/result-purple.png" style={{display: 'none'}} alt="" />
+                          <img src="img/result-purple.png" style={{visibility: 'hidden'}} alt="" />
                         </div>
                         <div className="branch" id="b3">
-                          <img src="img/result-green.png" alt="" />
+                          <img src="img/result-green.png" style={{visibility: 'hidden'}} alt="" />
                         </div>
                         <div className="branch" id="b4">
-                          <img src="img/result-yellow.png" style={{display: 'none'}} alt="" />
+                          <img src="img/result-yellow.png" style={{visibility: 'hidden'}} alt="" />
                         </div>
                         <div className="branch" id="b5">
-                          <img src="img/result-red.png" alt="" />
+                          <img src="img/result-red.png" style={{visibility: 'hidden'}} alt="" />
                         </div>
                       </div>
                     </div>
