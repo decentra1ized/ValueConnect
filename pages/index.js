@@ -114,69 +114,36 @@ export default function Home() {
               Solidity Next.js Starter
             </h1>
             <div className="space-y-8">
+              <div className="space-y-8">
                 <div className="flex flex-col space-y-4">
-                  <input
-                    className="border p-4 w-100 text-center"
-                    placeholder="A fetched greeting will show here"
-                    value={greeting}
-                    disabled
-                  />
-                  <button
-                      className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md w-full"
-                      onClick={fetchGreeting}
-                    >
-                      Fetch greeting from the blockchain
-                    </button>
-                </div>
-                <div className="space-y-8">
-                  <div className="flex flex-col space-y-4">
-                    <input
-                      className="border p-4 text-center"
-                      onChange={ e => setNewGreetingState(e.target.value)}
-                      placeholder="Write a new greeting"
-                      ref={newGreetingInputRef}
-                    />
+                  <div className="h-2">
+                    { newGreetingMessage && <span className="text-sm text-gray-500 italic">{newGreetingMessage}</span> }
+                  </div>
+                  { walletAddress ? (
+                    <div>
+                      Wallet Connected
+                    </div>
+                  ) : (
                     <button
                       className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
-                      onClick={setGreeting}
+                      onClick={manualConnectWallet}
                     >
-                      Set new greeting on the blockchain
+                      connect Metamask
                     </button>
-                    <div className="h-2">
-                      { newGreetingMessage && <span className="text-sm text-gray-500 italic">{newGreetingMessage}</span> }
-                    </div>
-                    { walletAddress ? (
-                      <div>
-                        Wallet Connected
-                      </div>
-                    ) : (
-                      <button
-                        className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
-                        onClick={manualConnectWallet}
-                      >
-                        connect Metamask
-                      </button>
-                    )
-                    }
-                  </div>
+                  )
+                  }
                 </div>
-                <div className="h-4">
-                  { connectedWalletAddress && <p className="text-md">{connectedWalletAddress}</p> }
-                </div>
+              </div>
+              <div className="h-4">
+                { connectedWalletAddress && <p className="text-md">{connectedWalletAddress}</p> }
+              </div>
             </div>
           </>
         ) }
       </main>
 
       <footer className="mt-20">
-        <a
-          href="https://github.com/tomhirst/solidity-nextjs-starter/blob/main/README.md"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:text-blue-700"
-        >
-          Read the docs
-        </a>
+        this is footer
       </footer>
     </div>
   )

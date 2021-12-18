@@ -1,1 +1,1 @@
-export const TokenContract = '0xF7d08d8b8D338dcCf58C7Bbce4269f5F6ba7801e'
+export const TokenContract = '0x040623407218821e2fc53289b039F39E18dc777C'

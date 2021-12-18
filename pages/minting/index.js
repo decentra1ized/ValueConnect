@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from 'react'
 import { ethers } from 'ethers'
 import { hasEthereum } from '../../utils/ethereum'
 
-import ERC1155ABI from '../../constants/abi/erc1155.json'
+import ERC1155ABI from '../../constants/abi/new-erc1155.json'
 import { TokenContract } from '../../constants/contracts'
 
 export default function Home() {
@@ -13,6 +13,7 @@ export default function Home() {
   const [walletAddress, setWalletAddress] = useState('')
 
   const erc1155DataInput = useRef()
+  const erc1155URIInput = useRef()
   const erc1155MintingCountInput = useRef()
   
   useEffect( () => {
@@ -54,15 +55,43 @@ export default function Home() {
   }
 
   async function onClickMinting () {
-    console.warn('mock minting')
+    console.log('start minting', Number(erc1155MintingCountInput.current.value), erc1155URIInput.current.value, erc1155DataInput.current.value)
     if(!hasEthereum || !walletAddress) {
       return
     }
     
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const contract = new ethers.Contract(TokenContract, ERC1155ABI, provider.getSigner())
-    const contractResult = await contract.balanceOf(walletAddress, 0)
+    const contractResult = await contract.balanceOf(walletAddress, 0, {
+      gasLimit: 20000000
+    }) // <- contract.METHOD_NAME 은 abi 파일 참조
+
     console.log(contractResult)
+    const estimatedGas = await contract.estimateGas.create(
+      Number(erc1155MintingCountInput.current.value),
+      erc1155URIInput.current.value,
+      ethers.utils.formatBytes32String(erc1155DataInput.current.value),
+    )
+    console.log('estimated gas: ', estimatedGas)
+    const mintingResult = await contract.create(
+      Number(erc1155MintingCountInput.current.value),
+      erc1155URIInput.current.value,
+      ethers.utils.formatBytes32String(erc1155DataInput.current.value),
+      {
+        gasLimit: estimatedGas
+      }
+    )
+
+    // const mintingResult = await contract.create(
+    //   walletAddress,
+    //   Number(erc1155MintingCountInput.current.value),
+    //   erc1155URIInput.current.value,
+    //   ethers.utils.formatBytes32String(erc1155DataInput.current.value),
+    //   {
+    //     gasLimit: estimatedGas
+    //   }
+    // )
+    console.log(mintingResult)
   }
 
   return (
@@ -85,7 +114,6 @@ export default function Home() {
                 <div>
                   <input
                     className="border p-4 text-center"
-                    onChange={ e => setNewGreetingState(e.target.value)}
                     placeholder="token additional data"
                     ref={erc1155DataInput}
                   />
@@ -93,7 +121,13 @@ export default function Home() {
                 <div>
                   <input
                     className="border p-4 text-center"
-                    onChange={ e => setNewGreetingState(e.target.value)}
+                    placeholder="token uri data"
+                    ref={erc1155URIInput}
+                  />
+                </div>
+                <div>
+                  <input
+                    className="border p-4 text-center"
                     placeholder="token minting count"
                     type="number"
                     ref={erc1155MintingCountInput}
