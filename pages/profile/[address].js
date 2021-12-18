@@ -114,10 +114,10 @@ export default function Home() {
                     </div>
                     <div className="profile-info-righttext">
                       <p>이름 : {userProfile.name}</p>
-                      <p>소개 : {userProfile.funFact}</p>
-                      <p>취미 : {userProfile.hobby}</p>
-                      <p>취향 : {userProfile.interest}</p>
-                      <p>직업 : {userProfile.job}</p>
+                      <p>성별 : {userProfile.gender}</p>
+                      <p>나이 : {userProfile.age}</p>
+                      <p>미디어 : {userProfile.socialMedia.join(', ')}</p>
+                      <p>취향 : {userProfile.interest.join(', ')}</p>
                     </div>
                   </div>
                   :

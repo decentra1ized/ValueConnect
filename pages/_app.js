@@ -3,6 +3,7 @@ import '../styles/index.css'
 import '../styles/profile.css'
 import '../styles/leftside.css'
 import '../styles/tokenlist.css'
+import '../styles/signin.css'
 
 function MyApp({ Component, pageProps }) {
   return <div className="root">

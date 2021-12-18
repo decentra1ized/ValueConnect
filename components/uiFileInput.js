@@ -25,25 +25,30 @@ export const UiFileInputButton = (props) => {
   };
 
   return (
-    <form ref={formRef}>
-      <button type="button" onClick={onClickHandler}>
-        {props.label}
-      </button>
-      <input
-        value={props.userAddress}
-        style={{ display: "none" }}
-        readOnly
-      />
-      <input
-        accept={props.acceptedFileTypes}
-        multiple={props.allowMultipleFiles}
-        name={props.uploadFileName}
-        onChange={onChangeHandler}
-        ref={fileInputRef}
-        style={{ display: "none" }}
-        type="file"
-      />
-    </form>
+    <div
+      className="file-upload"
+      onClick={onClickHandler}
+    >
+      <form ref={formRef}>
+        <button type="button">
+          {props.label}
+        </button>
+        <input
+          value={props.userAddress}
+          style={{ display: "none" }}
+          readOnly
+        />
+        <input
+          accept={props.acceptedFileTypes}
+          multiple={props.allowMultipleFiles}
+          name={props.uploadFileName}
+          onChange={onChangeHandler}
+          ref={fileInputRef}
+          style={{ display: "none" }}
+          type="file"
+        />
+      </form>
+    </div>
   );
 };
 

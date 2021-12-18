@@ -1,0 +1,49 @@
+.signin-body {
+  width: 300px;
+  font-size: 12px;
+  font-weight: bolder;
+}
+.signin-input-input {
+  width: 100%;
+  padding-left: 12px;
+  border: 1.5px solid #111111;
+  border-radius: 4px;
+  box-shadow: 0 3px 4px #555555;
+  margin: 0 0 8px;
+  line-height: 2.5;
+}
+.signin-morebutton {
+  width: 100%;
+  padding-left: 8px;
+  border: 1.5px solid #777777;
+  color: #777777;
+  border-radius: 4px;
+  box-shadow: 0 3px 4px #aaaaaa;
+  margin: 0 0 8px;
+  line-height: 2.5;
+}
+.signin-label {
+  display: flex;
+  align-items: center;
+  margin: 12px 0 8px;
+}
+.signin-label-circle {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  border-radius: 12px;
+  background-color: #c4c4c4;
+  text-align: center;
+  line-height: 24px;
+}
+.file-upload {
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
+  padding-left: 8px;
+  width: 100%;
+  border: 1.5px solid #111111;
+  border-radius: 4px;
+  box-shadow: 0 3px 4px #555555;
+  margin: 0 0 8px;
+  line-height: 2.5;
+}

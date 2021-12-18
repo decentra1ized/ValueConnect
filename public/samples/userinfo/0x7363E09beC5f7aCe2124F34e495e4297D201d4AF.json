@@ -1,7 +1,1 @@
-{
-  "name": "test",
-  "funFact": "test1",
-  "hobby": "test2",
-  "interest": "test3",
-  "job": "test4"
-}
+{"name":"sangyoon","gender":"man","age":"33","socialMedia":["qwer"],"interest":["zxcv","qwerqwer"]}
