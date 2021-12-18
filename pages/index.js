@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useState, useRef } from 'react'
+import { useRouter } from 'next/router'
 import { ethers } from 'ethers'
 import { hasEthereum } from '../utils/ethereum'
 import Greeter from '../src/artifacts/contracts/Greeter.sol/Greeter.json'
@@ -10,7 +11,9 @@ export default function Home() {
   const [newGreetingMessage, setNewGreetingMessageState] = useState('')
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
   const [walletAddress, setWalletAddress] = useState('')
-  const newGreetingInputRef = useRef();
+  const newGreetingInputRef = useRef()
+
+  const router = useRouter()
 
   // If wallet is already connected...
   useEffect( () => {
@@ -19,6 +22,7 @@ export default function Home() {
       window.addEventListener('ethereum#initialized', async () => {
         console.log('window.ethereum connected by event')
         setConnectedWalletAddress()
+        router.push('/profile')
         setWalletAddress(await requestAccount())
       }, {
         once: true,
@@ -35,7 +39,7 @@ export default function Home() {
     try {
       const signerAddress = await signer.getAddress()
       setConnectedWalletAddressState(`Connected wallet: ${signerAddress}`)
-      setWalletAddress(signerAddress)
+      router.push('/profile')
     } catch {
       setConnectedWalletAddressState('No wallet connected')
       return
@@ -46,6 +50,7 @@ export default function Home() {
       await window.ethereum.enable()
       const address = await requestAccount()
       setConnectedWalletAddress()
+      router.push('/profile')
       setWalletAddress(address[0])
       console.log(address)
     }
@@ -104,47 +109,35 @@ export default function Home() {
       </Head>
 
       <main className="space-y-8">
-        { ! process.env.NEXT_PUBLIC_GREETER_ADDRESS ? (
-            <p className="text-md">
-              Please add a value to the <pre>NEXT_PUBLIC_GREETER_ADDRESS</pre> environment variable.
-            </p>
-        ) : (
-          <>
-            <h1 className="text-4xl font-semibold mb-8">
-              Solidity Next.js Starter
-            </h1>
-            <div className="space-y-8">
-              <div className="space-y-8">
-                <div className="flex flex-col space-y-4">
-                  <div className="h-2">
-                    { newGreetingMessage && <span className="text-sm text-gray-500 italic">{newGreetingMessage}</span> }
-                  </div>
-                  { walletAddress ? (
-                    <div>
-                      Wallet Connected
-                    </div>
-                  ) : (
-                    <button
-                      className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
-                      onClick={manualConnectWallet}
-                    >
-                      connect Metamask
-                    </button>
-                  )
-                  }
+        <h1 className="text-4xl font-semibold mb-8">
+          Solidity Next.js Starter
+        </h1>
+        <div className="space-y-8">
+          <div className="space-y-8">
+            <div className="flex flex-col space-y-4">
+              <div className="h-2">
+                { newGreetingMessage && <span className="text-sm text-gray-500 italic">{newGreetingMessage}</span> }
+              </div>
+              { walletAddress ? (
+                <div>
+                  Wallet Connected
                 </div>
-              </div>
-              <div className="h-4">
-                { connectedWalletAddress && <p className="text-md">{connectedWalletAddress}</p> }
-              </div>
+              ) : (
+                <button
+                  className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-md"
+                  onClick={manualConnectWallet}
+                >
+                  connect Metamask
+                </button>
+              )
+              }
             </div>
-          </>
-        ) }
+          </div>
+          <div className="h-4">
+            { connectedWalletAddress && <p className="text-md">{connectedWalletAddress}</p> }
+          </div>
+        </div>
       </main>
-
-      <footer className="mt-20">
-        this is footer
-      </footer>
     </div>
   )
 }
