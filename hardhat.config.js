@@ -18,7 +18,21 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+  solidity: {
+    compilers: [
+      {
+        version: "0.7.4",
+      }
+    ],
+    overrides: {
+        "contracts/ERC1155Tradable.sol": {
+        version: "0.7.4"
+      },
+      "contracts/Stirngs.sol": {
+        version: "0.7.4"
+      }
+    }
+  },
   paths: {
     artifacts: './src/artifacts'
   },
