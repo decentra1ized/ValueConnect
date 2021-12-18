@@ -1,13 +1,17 @@
 ////copy this file for easy web3 connect initialize.
 
 import Head from 'next/head'
-import { useEffect, useState, useRef } from 'react'
+import { useCallback, useEffect, useState, useRef } from 'react'
 import { ethers } from 'ethers'
+import axios from 'axios'
 import { hasEthereum } from '../../utils/ethereum'
+
+import {UiFileInputButton} from '../../components/uiFileInput'
 
 export default function Home() {
   const [connectedWalletAddress, setConnectedWalletAddressState] = useState('Waiting for the wallet connect......')
   const [walletAddress, setWalletAddress] = useState('')
+  const [thumb, setThumb] = useState([]);
   
   useEffect( () => {
     if(! hasEthereum()) {
@@ -46,6 +50,20 @@ export default function Home() {
       console.log(address)
     }
   }
+  const onChange = useCallback(
+    async (formData) => {
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+          "x-user-address": walletAddress,
+        },
+      }
+      axios.post("/api/uploadimg", formData, config).then((res) => {
+        setThumb([...thumb, ...res.data]);
+      })
+    },
+    [thumb]
+  )
 
   return (
     <div className="max-w-lg mt-36 mx-auto text-center px-4">
@@ -73,6 +91,14 @@ export default function Home() {
             )
             }
           </div>
+          <UiFileInputButton
+            label="Upload Single File"
+            // allowMultipleFiles 가 false 일경우, 하나씩만 올릴 수 있다.
+            allowMultipleFiles={false}
+            uploadFileName='file'
+            userAddress={walletAddress}
+            onChange={onChange}
+          />
         </div>
       </main>
     </div>

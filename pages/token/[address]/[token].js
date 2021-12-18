@@ -14,12 +14,9 @@ export default function Home() {
   
   useEffect(() => {
     if(!router.isReady) return
-    if(!address || token) {
+    if(!address || !token) {
       router.push('/')
     }
-  }, [router.isReady])
-
-  useEffect( () => {
     if(! hasEthereum()) {
       setConnectedWalletAddressState(`MetaMask unavailable`)
       window.addEventListener('ethereum#initialized', async () => {
@@ -32,7 +29,7 @@ export default function Home() {
       return
     }
     setConnectedWalletAddress();
-  },[])
+  }, [router.isReady])
   
   async function setConnectedWalletAddress() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
