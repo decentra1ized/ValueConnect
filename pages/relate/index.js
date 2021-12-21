@@ -79,19 +79,19 @@ export default function Home() {
                     <div className="row">
                       <div className="col-sm-12">         
                         <div className="branch" id="b1" style={{marginLeft: '5%'}}>
-                          <img src="img/circle-blue.png" style={{visibility: tokenLength.length < 6 ? 'visible' : 'hidden', width: '70%', marginLeft: '0%'}} title = "" alt="" />
+                          <img src="img/circle-blue.png" style={{visibility: 'visible', width: '70%', marginLeft: '0%'}} title = "" alt="" />
                         </div>
                         <div className="branch" id="b2">
                           <img src="img/circle-purple.png" style={{visibility: 'hidden', width: '70%', marginRight: '0'}} alt="" />
                         </div>
                         <div className="branch" id="b3">
-                          <img src="img/circle-green.png" style={{visibility: tokenLength.length < 4 ? 'visible' : 'hidden', marginRight: '0'}} title = "" alt="" />
+                          <img src="img/circle-green.png" style={{visibility: tokenLength.length < 4 ? 'hidden' : 'visible', marginRight: '0'}} title = "" alt="" />
                         </div>
                         <div className="branch" id="b4">
                           <img src="img/circle-yellow.png" style={{visibility: 'hidden', width: '70%', marginRight: '0'}} alt="" />
                         </div>
                         <div className="branch" id="b5">
-                          <img src="img/circle-red.png" style={{visibility: tokenLength.length < 2 ? 'visible' : 'hidden', marginRight: '0'}} title = "" alt="" />
+                          <img src="img/circle-red.png" style={{visibility: tokenLength.length < 2 ? 'hidden' : 'visible', marginRight: '0'}} title = "" alt="" />
                         </div>
                       </div>
                     </div>
@@ -122,13 +122,13 @@ export default function Home() {
                           <img src="img/result-blue.png" alt="" />
                         </div>
                         <div className="branch" id="b2">
-                          <img src="img/result-purple.png" style={{visibility: tokenLength.length < 5 ? 'visible' : 'hidden'}} title = "" alt="" />
+                          <img src="img/result-purple.png" style={{visibility: tokenLength.length < 5 ? 'hidden' : 'visible'}} title = "" alt="" />
                         </div>
                         <div className="branch" id="b3">
                           <img src="img/result-green.png" style={{visibility: 'hidden'}} alt="" />
                         </div>
                         <div className="branch" id="b4">
-                          <img src="img/result-yellow.png" style={{visibility: tokenLength.length < 3 ? 'visible' : 'hidden',}} title = "" alt="" />
+                          <img src="img/result-yellow.png" style={{visibility: tokenLength.length < 3 ? 'hidden' : 'visible'}} title = "" alt="" />
                         </div>
                         <div className="branch" id="b5">
                           <img src="img/result-red.png" style={{visibility: 'hidden'}} alt="" />
